@@ -13,7 +13,7 @@ Practical examples also illustrate how existing STM32 projects can smoothly tran
 - Interact directly with ST experts and get immediate answers to technical or commercial questions
 
 ## Agenda
-*Click available links to access the content:*
+*Click available links to access the content.*
 
 > Workshop introduction – 10 min
 
