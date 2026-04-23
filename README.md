@@ -25,7 +25,7 @@ Practical examples also illustrate how existing STM32 projects can smoothly tran
 
 > STM32C5 in practice – 80 min
 
-- [STM32CubeMX2: new configuration and code generation features](MX2/MX2.md)
+- [STM32CubeMX2: new configuration and code generation features](MX2/README.md)
 - [STM32 HAL2: benefits in final applications](HAL2/HAL2.md)
 - [Hands on example: FreeRTOS project using STM32CubeIDE for VS Code](FeeRTOS/FreeRTOS.md)
 
