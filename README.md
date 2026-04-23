@@ -21,7 +21,7 @@ Practical examples also illustrate how existing STM32 projects can smoothly tran
 
 > Live Q&A – 10 min
 
-> [Upgraded STM32Cube ecosystem – What’s new?](Cube/Cube.md) – 30 min
+> [Upgraded STM32Cube ecosystem – What’s new?](Cube/STM32Cube Ecosystem Upgrade.pptx) – 30 min
 
 > STM32C5 in practice – 80 min
 
