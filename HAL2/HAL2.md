@@ -28,7 +28,7 @@ Resolve major known issues of HAL"1" which means:
 ## HAL2 use natively LL inside HAL functions
 [more details here](https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/docs/overview/hal_ll_layered_drivers.html#hal-and-ll-layered-drivers)
 
-HAL1 and LL were more or less side by side (the LL was developed after the introduction of the HAL). HAL2 services now exclusively call LL functions instead of direct register access, improving driver maintenance and upgrades. Although some exceptions exists like CAN FD driver ([check other here](https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/docs/drivers/stm32c5xx_drivers_overview.html#stm32c5xx-drivers-overview)) which doesn't use LL driver.
+**HAL1** and LL were more or less **side by side** (the LL was developed after the introduction of the HAL). **HAL2** services now **exclusively call LL functions** instead of direct register access, improving driver maintenance and upgrades. Although some exceptions exists like CAN FD driver ([check other here](https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/docs/drivers/stm32c5xx_drivers_overview.html#stm32c5xx-drivers-overview)) which doesn't use LL driver.
 
 <img src="imgs/HAL2Block.png" width="500"/>
 
@@ -39,20 +39,24 @@ HAL1 vs HAL2 - GPIO Initialization example:
 HAL1 vs HAL2 - **LL** - GPIO Initialization example:
 
 ![](imgs/HAL1vsHAL2_LL.png)
-## Init vs SetConfig
+## Init() vs SetConfig()
 [more details here](https://dev.st.com/stm32cube-docs/hal1-to-hal2-migration/1.0.0/en/docs/markup/drivers_documentation/breaking_concepts/breaking_concepts_concept_A.html)
-- HAL_..._Init() - initializes handle structure and link instance - big difference in HAL1 - no more the same function.
-- HAL_..._SetConfig() - configures peripheral registers
-- separated configuration structures to save memory, faster. Not one heavy structure, not all features needed (save extra RAM footprint).
-  - major/global configuration (e.g., UART)
-  - additional sub-block configuration (e.g., TIM requires a global configuration and may also require at least one channel configuration if used in output or input compare mode) see [here](https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/docs/overview/hal_data_structure_and_types.html#hal-configuration-structures)
 
-HAL1 Init() vs HAL2 Init() and SetConfig()-  example:
+Two functions:
+- HAL_PPP_Init() - initializes **handle structure** and **link periph. instance** - big difference in HAL1 - no more the same function.
+- HAL_PPP_SetConfig() - configures **peripheral registers**
+- separated configuration structures - configuring what is needed - to save memory, faster. Not one heavy structure, not all features needed (save extra RAM footprint).
+    - global configuration (e.g., UART)
+    - additional sub-block configuration (e.g., TIM requires a global configuration and may also require at least one channel configuration if used in output or input compare mode) see [here](https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/docs/overview/hal_data_structure_and_types.html#hal-configuration-structures)
+
+HAL1 _Init() vs HAL2 _Init() and _SetConfig()-  example:
 
 ![](imgs/HAL1vsHAL2_Init_config.png)
 
 ## No global handles
-Each peripheral handle is static, defined in the dedicated mx_ .c file. The handle can be accessed using getter function.
+Each peripheral handle is **static**, defined in the dedicated mx_ .c file. 
+
+The handle can be accessed using **getter function**.
 
 example for mx_spi1.c:
 ```cpp
@@ -73,20 +77,6 @@ or:
 ```cpp
 HAL_SPI_TransmitReceive(mx_spi1_gethandle(), tx_buf, rx_buf, buf_size, HAL_MAX_DELAY);
 ```
-## Better code handling and debuging
-[more details here](https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/docs/overview/hal_data_structure_and_types.html#hal-parameter-types)
-
-thanks to enumeration types:
-- HAL1 uses macros for configuration values.
-- HAL2 uses enumeration types instead.
-
-(This applies for HAL layer only, LL remains using defines)
-
-![](imgs/HAL1macroHAL2enum.png)
-
-Debugging:
-
-![](imgs/enums.png)
 
 ## *xxxx_MspInit()* or *xxxx_hal_msp.c* not used any more
 [more details here](https://dev.st.com/stm32cube-docs/hal1-to-hal2-migration/1.0.0/en/docs/markup/drivers_documentation/breaking_concepts/breaking_concepts_concept_L.html#remove-the-global-msp-file)
@@ -101,6 +91,21 @@ The mx_ .c file also contains interrupt handler. The file stm32xxx_it.c was also
 
 ![](imgs/msp.png)
 
+## Better code handling and debuging
+[more details here](https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/docs/overview/hal_data_structure_and_types.html#hal-parameter-types)
+
+thanks to **enumeration types**:
+- HAL1 uses macros for configuration values.
+- HAL2 uses enumeration types instead.
+
+(This applies for HAL layer only, LL remains using defines)
+
+![](imgs/HAL1macroHAL2enum.png)
+
+Debugging:
+
+![](imgs/enums.png)
+
 ## No user sections in the code
 This detail is related to code generation.
 MX2 never touch files outside **generated/** folder.
@@ -110,7 +115,7 @@ MX2 never touch files outside **generated/** folder.
 ## User data feature
 [more details here](https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/docs/overview/hal_drivers_apis.html#setting-and-getting-user-data)
 
-Once the feature is enabled, it allows to associate user object (variable, structure,...) with peripheral handle using *HAL_PPP_SetUserData(...)* and *HAL_PPP_GetUserData(...)* functions.
+Once the feature is enabled, it allows to associate **user object** (variable, structure,...) with **peripheral handle** and access that user data using *HAL_PPP_SetUserData(...)* and *HAL_PPP_GetUserData(...)* functions.
 
 ![](imgs/prjSettings.png)
 
@@ -121,11 +126,11 @@ Once the feature is enabled, it allows to associate user object (variable, struc
 ## Improved footprint
 HAL vs HAL2 drivers comparision
 
-Three project generated by CubeMX/CubeMX2 (STM32C0, STM32H5, STM32C5):
+Three project generated by CubeMX/CubeMX2 ( STM32**C0** ,  STM32**H5** ,  STM32**C5** ):
 - USART1 asynchronous mode
 - TIM1 CH1 PWM
 
-- Comparing only HAL drivers, not application sources.
+- Comparing **only HAL drivers**, not application sources.
 - Linker file adjusted to have the same amount for flash and SRAM memory for better comparison in build output.
 
 ![](imgs/HAL2_comparison_buildAnalyzer.png)
@@ -137,3 +142,9 @@ Result:
 More details:
 
 ![](imgs/HAL2_comparison.png)
+
+## Conclusion
+
+- Users starting with **HAL for the first time** -> **no problem**
+- Users **knowing HAL1 already**, starting **new project on HAL2** -> **no problem** Can take a look at this [digest of changes](https://dev.st.com/stm32cube-docs/hal1-to-hal2-migration/1.0.0/en/docs/markup/drivers_documentation/breaking_concepts/breaking_concepts_toc.html)
+- Users having a project in HAL1 and migrating to HAL2 -> need some effort with migration. [Migration guide](https://dev.st.com/stm32cube-docs/hal1-to-hal2-migration/1.0.0/en/index.html)
