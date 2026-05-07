@@ -46,8 +46,8 @@ Two functions:
 - HAL_PPP_Init() - initializes **handle structure** and **link periph. instance** - big difference in HAL1 - no more the same function.
 - HAL_PPP_SetConfig() - configures **peripheral registers**
 - separated configuration structures - configuring what is needed - to save memory, faster. Not one heavy structure, not all features needed (save extra RAM footprint).
-    - global configuration (e.g., UART)
-    - additional sub-block configuration (e.g., TIM requires a global configuration and may also require at least one channel configuration if used in output or input compare mode) see [here](https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/docs/overview/hal_data_structure_and_types.html#hal-configuration-structures)
+    - **global** configuration (e.g., UART)
+    - **additional sub-block** configuration (e.g., TIM requires a global configuration and may also require at least one channel configuration if used in output or input compare mode) see [here](https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/docs/overview/hal_data_structure_and_types.html#hal-configuration-structures)
 
 HAL1 _Init() vs HAL2 _Init() and _SetConfig()-  example:
 
