@@ -584,7 +584,7 @@
   },
   "conflict": {
     "generated": "OVERWRITE_WITHOUT_BACKUP",
-    "all": "CUSTOM",
+    "all": "OVERWRITE_WITHOUT_BACKUP",
     "pack": "OVERWRITE_WITHOUT_BACKUP",
     "project_file": "OVERWRITE_WITH_BACKUP",
     "RTE": "OVERWRITE_WITHOUT_BACKUP",
