@@ -29,6 +29,6 @@ Practical examples also illustrate how existing STM32 projects can smoothly tran
 - [STM32 HAL2: benefits in final applications](HAL2/HAL2.md)
 - [Hands on example: FreeRTOS project using STM32CubeIDE for VS Code](FreeRTOS/FreeRTOS.md)
 
-> Q&A – 15 min
+> Q&A – 15 min (see some answers in [FAQs](FAQ.md))
 
 > Closing of the session – 5 min
