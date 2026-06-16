@@ -2,7 +2,7 @@
 ## Useful links
 |Content|Link|
 |-:|-|
-| **Getting started** with STM32Cube **ecosystem**: <br>(development tools) | [https://stm32cubedocs-dev.st.com/stm32cube-docs/stm32cube-getting-started/1.1.1/en/index.html](https://stm32cubedocs-dev.st.com/stm32cube-docs/stm32cube-getting-started/1.1.1/en/index.html) |
+| **Getting started** with STM32Cube **ecosystem**: <br>(development tools) | [https://dev.st.com/stm32cube-docs/stm32cube-getting-started/1.1.1/en/index.html](https://dev.st.com/stm32cube-docs/stm32cube-getting-started/1.1.1/en/index.html) |
 | STM32Cube HAL2 - entry point: <br>(HAL2 documentation)| [https://dev.st.com/stm32cube-docs/stm32cubedocs-landing-page/en/index.html](https://dev.st.com/stm32cube-docs/stm32cubedocs-landing-page/en/index.html) |
 |STM32Cube **Embedded SW** online documentation: |[https://dev.st.com/stm32cube-docs/embedded-software/2.0.0/en/index.html](https://dev.st.com/stm32cube-docs/embedded-software/2.0.0/en/index.html)|
 |STM32 **HAL/LL Drivers** Documentation: |[https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/index.html](https://dev.st.com/stm32cube-docs/stm32c5xx-hal-drivers/2.0.0/en/index.html)|
