@@ -56,5 +56,8 @@
 ### What precision FPU is used in STM32C5?
 - Single precission.
 
-### where are the fabs for the STM32C5 - Is it in Europe? Also the packaging? 
+### Where are the fabs for the STM32C5 - Is it in Europe? Also the packaging? 
 - France. Yes (LQFP packages in the case of STM32C5).
+
+### Are we allowed to share the presentation with colleagues?
+- No confidential information shared, so yes.
